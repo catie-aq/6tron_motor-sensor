@@ -13,7 +13,7 @@ namespace sixtron {
 #define DIR_NORMAL (+1)
 #define DIR_INVERTED (-1)
 
-class MotorSensorMbedAS5047P: MotorSensor {
+class MotorSensorMbedAS5047P: public MotorSensor {
 public:
     MotorSensorMbedAS5047P(SPI *spiAS5047p,
             PinName sensor_spi_select,
