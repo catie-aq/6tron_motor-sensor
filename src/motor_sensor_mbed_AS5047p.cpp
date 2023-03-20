@@ -8,7 +8,7 @@ namespace sixtron {
 
 MotorSensorMbedAS5047P::MotorSensorMbedAS5047P(SPI *spiAS5047p,
         PinName sensor_spi_select,
-        float rateHz,
+        float rate_dt,
         int32_t sensorResolution,
         float motorResolution,
         float motorWheelRadius,
