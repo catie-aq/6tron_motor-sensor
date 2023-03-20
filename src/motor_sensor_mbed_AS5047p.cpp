@@ -17,7 +17,7 @@ MotorSensorMbedAS5047P::MotorSensorMbedAS5047P(SPI *spiAS5047p,
         _motorWheelRadius(motorWheelRadius),
         _spiAS5047p(spiAS5047p),
         _as5047p_spi_cs(sensor_spi_select),
-        _updateRateHz(rateHz),
+        _updateRate_dt(rate_dt),
         _sensorResolution(sensorResolution),
         _sensorDirection(sensorDirection)
 {
@@ -90,7 +90,7 @@ float MotorSensorMbedAS5047P::getSpeed()
 {
 
     return ((ticks2Meters(float(_sensorTickCount)) - ticks2Meters(float(_sensorTickCountOld)))
-            / _updateRateHz);
+            / _updateRate_dt);
 }
 
 float MotorSensorMbedAS5047P::getAngle()

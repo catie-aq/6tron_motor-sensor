@@ -17,7 +17,7 @@ class MotorSensorMbedAS5047P: public MotorSensor {
 public:
     MotorSensorMbedAS5047P(SPI *spiAS5047p,
             PinName sensor_spi_select,
-            float rateHz,
+            float rate_dt,
             int32_t sensorResolution,
             float motorResolution,
             float motorWheelRadius,
@@ -55,7 +55,7 @@ private:
     DigitalOut _as5047p_spi_cs;
 
     // sensor data
-    float _updateRateHz = 0.0f;
+    float _updateRate_dt = 0.0f;
     int64_t _sensorResolution = 0;
     int64_t _sensorDirection = 0;
 
