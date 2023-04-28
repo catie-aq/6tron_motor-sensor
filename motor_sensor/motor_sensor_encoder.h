@@ -2,8 +2,8 @@
  * Copyright (c) 2023, CATIE
  * SPDX-License-Identifier: Apache-2.0
  */
-#ifndef CATIE_SIXTRON_MOTORSENSOR_MBED_AS147P_H
-#define CATIE_SIXTRON_MOTORSENSOR_MBED_AS147P_H
+#ifndef CATIE_SIXTRON_MOTORSENSOR_ENCODER_H
+#define CATIE_SIXTRON_MOTORSENSOR_ENCODER_H
 
 #include "mbed.h"
 #include "motor_sensor.h"
@@ -13,17 +13,15 @@ namespace sixtron {
 #define DIR_NORMAL (+1)
 #define DIR_INVERTED (-1)
 
-class MotorSensorMbedAS5047P: public MotorSensor {
+class MotorSensorEncoder: public MotorSensor {
 public:
-    MotorSensorMbedAS5047P(SPI *spiAS5047p,
-            PinName sensor_spi_select,
-            float rate_dt,
+    MotorSensorEncoder(float rate_dt,
             int32_t sensorResolution,
             float motorResolution,
             float motorWheelRadius,
             int encDirection = DIR_NORMAL);
 
-    ~MotorSensorMbedAS5047P();
+    ~MotorSensorEncoder();
 
     void init() override;
 
@@ -34,6 +32,11 @@ public:
     float getSpeed() override; // in [m/s], with gearbox and wheel.
 
     float getAngle() override; // in [rad].
+
+protected:
+    // THESE FUNCTION MUST BE REDEFINED REGARDING THE APPLICATION
+    virtual void initSensor() = 0;
+    virtual uint16_t getSensorValue() = 0;
 
 private:
     inline float ticks2Meters(float ticks) const
@@ -49,11 +52,6 @@ private:
     float _motorResolution, _motorWheelRadius;
     float _wheelPerimeter, _tickPerMeters;
 
-    uint16_t getSensorValue();
-
-    SPI *_spiAS5047p;
-    DigitalOut _as5047p_spi_cs;
-
     // sensor data
     float _updateRate_dt = 0.0f;
     int64_t _sensorResolution = 0;
@@ -68,4 +66,4 @@ private:
 
 } // namespace sixtron
 
-#endif // CATIE_SIXTRON_MOTORSENSOR_MBED_AS147P_H
+#endif // CATIE_SIXTRON_MOTORSENSOR_ENCODER_H
