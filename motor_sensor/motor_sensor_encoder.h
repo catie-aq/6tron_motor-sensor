@@ -38,6 +38,15 @@ protected:
     virtual void initSensor() = 0;
     virtual uint16_t getSensorValue() = 0;
 
+    // motor data
+    float _motorResolution, _motorWheelRadius;
+    float _wheelPerimeter, _tickPerMeters;
+
+    // sensor data
+    float _updateRate_dt = 0.0f;
+    int64_t _sensorResolution = 0;
+    int64_t _sensorDirection = 0;
+
 private:
     inline float ticks2Meters(float ticks) const
     {
@@ -48,14 +57,6 @@ private:
     {
         return ((ticks * float(M_PI)) / (_motorResolution / 2.0f));
     }
-
-    float _motorResolution, _motorWheelRadius;
-    float _wheelPerimeter, _tickPerMeters;
-
-    // sensor data
-    float _updateRate_dt = 0.0f;
-    int64_t _sensorResolution = 0;
-    int64_t _sensorDirection = 0;
 
     uint16_t _sensorRaw = 0;
     int32_t _sensorRevol = 0;
