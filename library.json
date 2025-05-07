@@ -1,0 +1,35 @@
+{
+    "name": "Motor Sensor",
+    "version": "0.0.1",
+    "description": "Motor Sensor Library",
+    "keywords": "motor, sensor, qei, counter, incremental",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/catie-aq/6tron_motor-sensor.git"
+    },
+    "authors": [
+        {
+            "name": "CATIE",
+            "email": "contact@catie.fr",
+            "url": "https://www.catie.fr/"
+        },
+        {
+            "name": "CopperBot",
+            "url": "https://github.com/Copper-Bot",
+            "maintainer": true
+        }
+    ],
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/catie-aq/6tron_motor-sensor",
+    "frameworks": "*",
+    "platforms": "*",
+    "headers": [
+        "motor_sensor.h"
+    ],
+    "build": {
+        "includeDir": ".",
+        "flags": [
+            "-I motor_sensor"
+        ]
+    }
+}
