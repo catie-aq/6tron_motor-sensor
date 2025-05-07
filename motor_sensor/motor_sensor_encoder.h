@@ -5,7 +5,6 @@
 #ifndef CATIE_SIXTRON_MOTORSENSOR_ENCODER_H
 #define CATIE_SIXTRON_MOTORSENSOR_ENCODER_H
 
-#include "mbed.h"
 #include "motor_sensor.h"
 
 namespace sixtron {
